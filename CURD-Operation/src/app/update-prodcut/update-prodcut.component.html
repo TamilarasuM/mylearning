@@ -1,0 +1,20 @@
+<h3>
+Update Savings:
+</h3>
+
+<!-- <form id ="formNewProduct" name="formNewProduct" #newProduct ="ngForm" (ngSubmit)="updateProduct(newProduct.value)">
+<label>Name:</label><input name="name" placeholder="enter name" [(ngModel)]="data.name" required>  <br> <br>
+<label>Color:</label><input name="color" placeholder="enter color" [(ngModel)]="data.color" required> <br> <br>
+<button type="submit">Update</button> 
+</form> -->
+
+<div class="well">
+
+<form id ="formNewProduct" name="formNewProduct" #newProduct ="ngForm" (ngSubmit)="updateProduct(newProduct.value)">
+  <label>Name:</label><input  class="form-control" name="name" placeholder="enter name" ngModel required> <br> <br>
+  <label>Amount:</label><input class="form-control" name="amt" placeholder="enter amt" ngModel required> <br> <br>
+  <label>Description:</label><input class="form-control" name="type" placeholder="enter type" ngModel required> <br> <br>
+  <button class="btn btn-success" [disabled]="newProduct.invalid" type="submit">Update Details</button> 
+</form>
+
+</div>

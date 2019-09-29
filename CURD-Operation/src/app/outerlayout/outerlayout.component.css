@@ -1,0 +1,36 @@
+.sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+  }
+  
+  .sidenav a{
+    color: black;
+    padding: 5px;
+  }
+
+  .sidenav a:hover{
+    color:white;
+    background-color: rgb(100, 94, 94);
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .sidenav {
+      height: auto;
+      padding: 15px;
+    }
+    .row.content {height:auto;} 
+  }
+  .sidenav{
+  position: fixed;
+  top: 54px;
+  bottom: 0;
+  left: 0;
+  padding: 35px;
+  min-width: 195px;
+  background-color: #fff;
+  box-shadow: 6px 0 6px rgba(0,0,0,.1);
+}

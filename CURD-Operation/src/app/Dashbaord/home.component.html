@@ -1,0 +1,49 @@
+<!-- <p>
+  <a routerLink="/product">Add Product</a>
+</p> -->
+<br>
+<label>Search:</label>
+<input type="text"  style="width: 100px;" [(ngModel)] ="searchTerm" placeholder="Search Mobile" />
+
+<h4 style="color: red">Debit</h4>
+<div class="well">
+<table class="table">
+<thead><tr>
+  <td>ID</td>  <td>Name</td> <td>Mobile No</td> <td>Date</td><td>Amount</td><td>Type</td><td>Delete</td><td>Update</td>
+</tr></thead>
+  <tr *ngFor="let data of dataSet | dataFilter:searchTerm ; trackBy:trackByfn">
+    <td>{{data.id}}</td><td>{{data.name}}</td> <td>{{data.mobileno}}</td> <td>{{data.date}}</td><td>{{data.amt | currency:"INR" }}</td>
+    <td>{{data.TranType}}</td>
+    <td><a (click)="DeleteCreadit(data.id)" >Delete</a></td>
+    <td><a [routerLink]="['../updateProduct', data.id]">Update</a></td>
+  </tr>
+</table>
+<div>
+    <!-- <span>Show Total</span> <input type="checkbox" #checkBX (change)="enableChkBx(checkBX)">  *ngIf=enableCntry-->
+<div style="color: red" class="card"><b>Total Amount: {{Total | currency:"INR"}}</b></div>
+</div>
+</div>
+
+<br/>
+<div>
+  <h4 style="color: green">Credit</h4>
+  <div class="well">
+  <table class="table">
+  <thead><tr>
+    <td>ID</td>  <td>Name</td> <td>Mobile No</td> <td>Date</td><td>Amount</td><td>Type</td><td>Delete</td><td>Update</td>
+  </tr></thead>
+    <tr *ngFor="let data of debitData | dataFilter:searchTerm ; trackBy:trackByfn">
+      <td>{{data.id}}</td><td>{{data.name}}</td> <td>{{data.mobileno}}</td> <td>{{data.date}}</td><td>{{data.amt | currency:"INR" }}</td>
+      <td>{{data.TranType}}</td>
+      <td><a (click)="DeleteProduct(data.id)" >Delete</a></td>
+      <td><a [routerLink]="['../updateProduct', data.id]">Update</a></td>
+    </tr>
+  </table>
+  <div>
+  <!-- <span>Show Total</span> <input type="checkbox" #checkBX (change)="enableChkBx(checkBX)"> -->
+  <!-- *ngIf=enableCntry -->
+  <div style="color: green" class="card"><b>Total Amount: {{debitTotal | currency:"INR"}}</b></div>
+  </div>
+  </div>
+
+</div>
