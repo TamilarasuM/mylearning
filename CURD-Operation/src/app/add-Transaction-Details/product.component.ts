@@ -32,7 +32,6 @@ export class ProductComponent implements OnInit {
     var searchName =data.value;
     this.http.get("http://localhost:5656/test").toPromise().then((res) =>{
      this.searchNameFound= true;
-     debugger
     //  if(searchName)
     // this.SearchName =res.find(r => r.mobileno == searchName).name
     //   this.dataSet = res;
