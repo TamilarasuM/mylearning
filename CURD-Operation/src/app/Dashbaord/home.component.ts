@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -31,7 +34,11 @@ export class HomeComponent implements OnInit {
   }
 fetchData (){
   debugger
-   this.http.get("https://tamilarasum.github.io/test/sampleApp/products.json").toPromise().then((res) =>{
+   this.http.get("https://tamilarasum.github.io/test/sampleApp/products.json").pipe(map( function(res,index){
+   debugger 
+   return res;
+    
+    }) ).subscribe((res) =>{
     this.debitData = res;
     this.debitTotal = this.updateTotal(this.debitData);
   })
@@ -74,6 +81,6 @@ fetchData (){
   }
 
   trackByfn(index, item){
-return item;
+    return item;
   }
 }
