@@ -18,6 +18,11 @@ import { AddDetailsComponent } from './add-member-details/add-details.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatNativeDateModule} from '@angular/material/core';
 
+
+import { MatAutocompleteModule, MatButtonModule, MatCheckboxModule, MatDatepickerModule, 
+  MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule, 
+  MatSlideToggleModule } from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,10 +35,11 @@ import {MatNativeDateModule} from '@angular/material/core';
     AddDetailsComponent,
   ],
   imports: [
+   BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-  FormsModule,
+    FormsModule,
     RouterModule.forRoot([
       // {path:"", redirectTo:"login", pathMatch:"full"},
       {path:"", component:LoginCompComponent},

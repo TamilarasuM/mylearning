@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from "@angular/router";
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -21,7 +22,16 @@ export class ProductComponent implements OnInit {
     debugger
     this.product = data;//{  "name" : data.name,"color" :data.color}
 
-    this.http.post("http://localhost:5656/products", this.product).subscribe( (res:Response) =>{
+    this.http.post("https://ng-complate-guide-3c2a6.firebaseio.com/products.json", this.product).pipe(
+      map(data => {   
+       var  list=[]
+        for(var i=0; i<Object.keys(data).length; i++)
+       {
+          list.push(data[Object.keys(data)[i]])
+       }
+       return list;
+      })
+    ).subscribe( (res:Response) =>{
           console.log(res)
           this.updatedSuccessfully =true;
           this.router.navigate(["/layout/home"]);
@@ -30,7 +40,16 @@ export class ProductComponent implements OnInit {
 
   search(data){
     var searchName =data.value;
-    this.http.get("http://localhost:5656/test").toPromise().then((res) =>{
+    this.http.get("https://ng-complate-guide-3c2a6.firebaseio.com/test.json").pipe(
+      map(data => {   
+       var  list=[]
+        for(var i=0; i<Object.keys(data).length; i++)
+       {
+          list.push(data[Object.keys(data)[i]])
+       }
+       return list;
+      })
+    ).toPromise().then((res) =>{
      this.searchNameFound= true;
     //  if(searchName)
     // this.SearchName =res.find(r => r.mobileno == searchName).name

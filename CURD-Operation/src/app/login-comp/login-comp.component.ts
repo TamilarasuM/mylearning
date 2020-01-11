@@ -18,7 +18,7 @@ export class LoginCompComponent implements OnInit {
   {
    
     if(this.authService.login(args.username,args.password))//(args.username == "test" && args.password == "test")
-   this.router.navigate(["/layout"]);
+   this.router.navigate(["/layout/home"]);
    else
     this.errorMsg = true; 
   }

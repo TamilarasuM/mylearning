@@ -27,17 +27,33 @@ export class HomeComponent implements OnInit {
 
  
   fetchMembers(){
-    this.http.get("http://localhost:5656/test").toPromise().then((res) =>{
+    this.http.get("https://ng-complate-guide-3c2a6.firebaseio.com/test.json").pipe(
+      map(data => {   
+       var  list=[]
+        for(var i=0; i<Object.keys(data).length; i++)
+       {
+          list.push(data[Object.keys(data)[i]])
+       }
+       return list;
+      })
+    ).toPromise().then((res) =>{
       this.dataSet = res;
+      debugger
       this.Total =  this.updateTotal(this.dataSet);
   });
   }
 fetchData (){
-  debugger
-   this.http.get("https://tamilarasum.github.io/test/sampleApp/products.json").pipe(map( function(res,index){
-   debugger 
+   this.http.get("https://ng-complate-guide-3c2a6.firebaseio.com/products.json").pipe(
+    map(data => {   
+     var  list=[]
+      for(var i=0; i<Object.keys(data).length; i++)
+     {
+        list.push(data[Object.keys(data)[i]])
+     }
+     return list;
+    })
+  ).pipe(map( function(res,index){
    return res;
-    
     }) ).subscribe((res) =>{
     this.debitData = res;
     this.debitTotal = this.updateTotal(this.debitData);
@@ -47,8 +63,8 @@ fetchData (){
 
   DeleteProduct(articleId) {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const url = '${"http://localhost:5656/products"}/${articleId}';
-    const url1 = 'http://localhost:5656/products/'+articleId;
+    const url = '${"https://ng-complate-guide-3c2a6.firebaseio.com/products"}/${articleId}';
+    const url1 = 'https://ng-complate-guide-3c2a6.firebaseio.com/products/'+articleId;
     this.http.delete(url1, {headers: headers}).toPromise().then( () => {
       this.fetchData();
     })
@@ -56,8 +72,8 @@ fetchData (){
 
   DeleteCreadit(articleId) {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const url = '${"http://localhost:5656/test"}/${articleId}';
-    const url1 = 'http://localhost:5656/test/'+articleId;
+    const url = '${"https://ng-complate-guide-3c2a6.firebaseio.com/test"}/${articleId}';
+    const url1 = 'https://ng-complate-guide-3c2a6.firebaseio.com/test/'+articleId;
     this.http.delete(url1, {headers: headers}).toPromise().then( () => {
       this.fetchData();
     })
