@@ -5,11 +5,17 @@
       </div>
     </nav> -->
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-header">
-        <a class="navbar-brand" href="#">Expense Tracker</a>
-        </div>
+        <div class="navbar-header"> 
+                <a class="navbar-brand"> 
+                     <span class="glyphicon glyphicon-list"></span>
+                    Expense Tracker
+                </a>
+                <!-- <a href="#"><span class="glyphicon glyphicon-list"></span> Expense Tracker</a> -->
+        <!-- </div> -->
+   
+    </div>
         <!-- <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Page 1</a></li>
@@ -27,9 +33,9 @@
     <div class="row content">
         <div class="col-md-2 pannel">
             <div class="sidenav">
-                <p><a routerLink="./home">Dashboard</a></p>
-                <p><a routerLink="./addMember">Add Member</a></p>
-                <p><a routerLink="./product">Add Transaction</a></p>      
+                <p><a routerLink="./home" routerLinkActive="active">Dashboard</a></p>
+                <p><a routerLink="./addMember" routerLinkActive="active">Add Member</a></p>
+                <p><a routerLink="./product" routerLinkActive="active">Add Transaction</a></p>      
                 </div>
         </div>
         <section class="col-md-8 text-left" style="margin-top: 54px;"> 

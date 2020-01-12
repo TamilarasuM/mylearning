@@ -1,15 +1,26 @@
-<h4>
+<!-- <h4>
   Add Transaction:
-</h4>
+</h4> -->
 <div class="well" style="width: 50%; left:20%">
 <form id ="formNewProduct" name="formNewProduct" #newProduct ="ngForm" (ngSubmit)="addProduct(newProduct.value)">
 <label>Mobile No:</label>
 <input  class="form-control" #mobNo name="mobileno" placeholder="mobile number" ngModel required>  <br>  
-<button type="button" class="btn btn-success" (click)="search(mobNo)"> Search </button> <br> <br>
-<div *ngIf="searchNameFound" class="alert alert-success">
+<button type="button" class="btn btn-success" (click)="search(mobNo)" style="
+position: relative;
+position: relative;
+top: -54px;
+float: right;
+"> Search </button> 
+<div *ngIf="searchNameFound else notShowBlock" class="alert alert-success">
 <!-- <label><strong> {{SearchName}}</strong> </label>  -->
-<label >Name:</label><input  class="form-control" value= {{SearchName}} name="name" placeholder="name" required> 
+  <label > <strong> {{SearchName}}</strong>  - name found !!!...</label>
+  <input  style="display: none;" class="form-control" value= {{SearchName}} name="name" placeholder="name" required> 
 </div>
+<ng-template #notShowBlock>
+  <div class="alert alert-danger">
+    search result not found.....
+  </div>
+</ng-template>
 
 <label>Transaction type:</label>
 <select class="form-control" name="TranType" ngModel>
@@ -26,7 +37,7 @@
 
 <label>Description1:</label><input class="form-control" name="type" placeholder="description" ngModel required> <br>
 
-<button class="btn btn-success" [disabled]="newProduct.invalid" type="submit">Add</button> 
+<button class="btn btn-success" [disabled]="newProduct.invalid" style="float:right;" type="submit">Submit</button> 
 </form>
 </div>
 

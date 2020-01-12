@@ -49,3 +49,23 @@ padding-top: 5em;
 padding-left: 3em;
 
 }
+
+.sidenav .active {
+    color: white;
+    background-color: rgb(100, 94, 94);
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .nav.navbar-nav.navbar-right {
+    display: none;
+  }
+
+  .sidenav {
+    width: 0;
+  }
+  
+}

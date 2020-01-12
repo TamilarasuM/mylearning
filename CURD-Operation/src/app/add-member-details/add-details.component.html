@@ -1,27 +1,25 @@
-<h4>
+<!-- <h4>
   Add Member details:
-</h4>
+</h4> -->
 <div class="well" style="width: 50%; left:20%">
 <form id ="formNewProduct" name="formNewProduct" #newProduct ="ngForm" (ngSubmit)="addDetails(newProduct.value)">
-  <label>Name:</label><input  class="form-control" name="name" placeholder="name" ngModel required><br> <br>
-
-  <label>Mobile No:</label><input  class="form-control" name="mobileno" placeholder="mobile number" ngModel required><br> <br>
+  <label>Name:</label><input  class="form-control" name="name" placeholder="name" ngModel required><br>
+  <label>Mobile No:</label><input  class="form-control" name="mobileno" placeholder="mobile number" ngModel required><br> 
 
 <label>Transaction type:</label>
 <select class="form-control" name="TranType" ngModel>
   <option value="Debit">Debit(+)</option>
   <option value="Credit">Credit(-)</option>
-</select> <br> <br>
+</select> <br> 
 
-<label>Amount:</label><input class="form-control" name="amt" placeholder="amount" ngModel required> <br> <br>
-
-<label>Date:</label><input class="form-control" type="date" name="date"  ngModel required> <br> <br>
+<label>Amount:</label><input class="form-control" name="amt" placeholder="amount" ngModel required> <br> 
+<label>Date:</label><input class="form-control" type="date" name="date"  ngModel required> <br> 
 
 <!-- <input type="text"  style="width: 300px;" [(ngModel)] ="searchTerm" />
 <input type="date"  style="width: 300px;"> -->
 
-<label>Description1:</label><input class="form-control" name="type" placeholder="description" ngModel required> <br> <br>
+<label>Description1:</label><input class="form-control" name="type" placeholder="description" ngModel required> <br> 
 
-<button class="btn btn-success" [disabled]="newProduct.invalid" type="submit">Add</button> 
+<button class="btn btn-success" [disabled]="newProduct.invalid" style="float:right;" type="submit">Submit</button> 
 </form>
 </div>

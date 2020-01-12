@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from "@angular/router";
-import { map } from 'rxjs';
+import { observable, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-product',
@@ -31,8 +33,8 @@ export class ProductComponent implements OnInit {
        }
        return list;
       })
-    ).subscribe( (res:Response) =>{
-          console.log(res)
+    ).subscribe( () =>{
+          console.log()
           this.updatedSuccessfully =true;
           this.router.navigate(["/layout/home"]);
     })
@@ -41,7 +43,8 @@ export class ProductComponent implements OnInit {
   search(data){
     var searchName =data.value;
     this.http.get("https://ng-complate-guide-3c2a6.firebaseio.com/test.json").pipe(
-      map(data => {   
+      map(data => {
+        debugger   
        var  list=[]
         for(var i=0; i<Object.keys(data).length; i++)
        {
@@ -49,11 +52,12 @@ export class ProductComponent implements OnInit {
        }
        return list;
       })
-    ).toPromise().then((res) =>{
-     this.searchNameFound= true;
-    //  if(searchName)
-    // this.SearchName =res.find(r => r.mobileno == searchName).name
-    //   this.dataSet = res;
+    ).subscribe((res) =>{
+      debugger
+           this.searchNameFound= true;
+      if(searchName)
+        this.SearchName =res.find(r => r.mobileno == searchName).name
+      // this.dataSet = res;
     //  this.updateTotal();
     })
   }
