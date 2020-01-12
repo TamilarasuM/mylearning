@@ -47,14 +47,11 @@ fetchData (){
     map(data => {   
      var  list=[]
       for(var i=0; i<Object.keys(data).length; i++)
-     {
         list.push(data[Object.keys(data)[i]])
-     }
      return list;
     })
-  ).pipe(map( function(res,index){
-   return res;
-    }) ).subscribe((res) =>{
+  ).subscribe((res) =>{
+    debugger
     this.debitData = res;
     this.debitTotal = this.updateTotal(this.debitData);
   })

@@ -25,12 +25,10 @@ export class UpdateProdcutComponent implements OnInit {
 
 
   updateProduct(args){
-    debugger
     this.data = args;
     this.routes.params.subscribe( parms=> {this.id = parms["id"]});
-    
     const httpOptions = {headers: new HttpHeaders({'Content-Type':  'application/json','Authorization': 'my-auth-token'})};
-    this.http.put("http://localhost:5656/products/"+this.id,JSON.stringify(this.data), httpOptions).subscribe((res:Response) =>{
+    this.http.put("/products/"+this.id,JSON.stringify(this.data), httpOptions).subscribe((res:Response) =>{
     this.router.navigate(["/"]);
     })
   }
