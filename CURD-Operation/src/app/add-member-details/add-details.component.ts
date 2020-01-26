@@ -19,7 +19,6 @@ export class AddDetailsComponent implements OnInit {
     //   //this.router.navigate(["/layout/home"]);
     // })
     this.http.post("https://ng-complate-guide-3c2a6.firebaseio.com/test.json",args).subscribe( (res:Response) =>{
-        console.log(res)
         this.router.navigate(["/layout/home"]);
       })
   }

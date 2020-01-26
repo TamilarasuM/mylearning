@@ -8,7 +8,6 @@ import { CanActivate } from '@angular/router';
 })
 export class OnlyLoggedInUsersGuardGuard implements CanActivate  {
   canActivate() {
-// debugger
     console.log("OnlyLoggedInUsers");
     if (sessionStorage.currentUser !=undefined) { 
       return true;

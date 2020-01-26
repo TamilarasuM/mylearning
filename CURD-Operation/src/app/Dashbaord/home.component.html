@@ -4,20 +4,21 @@
 <br>
 
 <span style="float: right;"> 
-<label style="display: inline;"> Search:</label>
-<input  type="text" style="width:100px;display:inline;" [(ngModel)] ="searchTerm" placeholder="Search Mobile" class="form-control"/>
+<label style="display: inline;"> Search: </label>
+<input  type="text" style="width:100px;display:inline;"  placeholder="Mobile" class="form-control"/>
 </span>
 <h4 style="color: red">Members Details:</h4>
 <div class="well">
 <table class="table">
 <thead><tr>
-  <td>ID</td>  <td>Name</td> <td>Mobile No</td> <td>Date</td><td>Amount</td><td>Type</td><td>Delete</td><td>Update</td>
+ <td>Name</td> <td>Mobile No</td> <td>Date</td><td>Amount</td><td>Type</td><td>Delete</td><td>Update</td>
 </tr></thead>
-  <tr *ngFor="let data of dataSet | dataFilter:searchTerm ; trackBy:trackByfn">
-    <td>{{data.id}}</td><td>{{data.name}}</td> <td>{{data.mobileno}}</td> <td>{{data.date}}</td><td>{{data.amt | currency:"INR" }}</td>
+
+  <tr *ngFor="let data of dataSet">
+    <td>{{data.name}}</td> <td>{{data.mobileno}}</td> <td>{{data.date}}</td><td>{{data.amt | currency:"INR" }}</td>
     <td>{{data.TranType}}</td>
-    <td><a (click)="DeleteCreadit(data.id)" >Delete</a></td>
-    <td><a [routerLink]="['../updateProduct', data.id]">Update</a></td>
+    <td><a (click)="DeleteCreadit(data.$key)" >Delete</a></td>
+    <td><a [routerLink]="['../updateProduct', data.$key]">Update</a></td>
   </tr>
 </table>
 <div>
@@ -32,13 +33,13 @@
   <div class="well">
   <table class="table">
   <thead><tr>
-    <td>ID</td>  <td>Name</td> <td>Mobile No</td> <td>Date</td><td>Amount</td><td>Type</td><td>Delete</td><td>Update</td>
+    <td>Name</td> <td>Mobile No</td> <td>Date</td><td>Amount</td><td>Type</td><td>Delete</td><td>Update</td>
   </tr></thead>
-    <tr *ngFor="let data of debitData | dataFilter:searchTerm ; trackBy:trackByfn">
-      <td>{{data.id}}</td><td>{{data.name}}</td> <td>{{data.mobileno}}</td> <td>{{data.date}}</td><td>{{data.amt | currency:"INR" }}</td>
+    <tr *ngFor="let data of debitData | dataFilter ; trackBy:trackByfn">
+      <td>{{data.name}}</td> <td>{{data.mobileno}}</td> <td>{{data.date}}</td><td>{{data.amt | currency:"INR" }}</td>
       <td>{{data.TranType}}</td>
-      <td><a (click)="DeleteProduct(data.id)" >Delete</a></td>
-      <td><a [routerLink]="['../updateProduct', data.id]">Update</a></td>
+      <td><a (click)="DeleteProduct(data.$key)" >Delete</a></td>
+      <td><a [routerLink]="['../updateProduct', data.$key]">Update</a></td>
     </tr>
   </table>
   <div>

@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { of } from 'rxjs';
+import { of } from "rxjs"
 import { map } from 'rxjs/operators';
+import { dataService } from "../_service/dataService"
+
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 
 @Component({
   selector: 'app-home',
@@ -11,89 +14,75 @@ import { map } from 'rxjs/operators';
   // changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
-  Total:number;
-  dataSet:any =[];
-  debitData:any=[];
-  id :number;
-  debitTotal:number;
-  enableCntry:boolean =false;
-  private headers = new Headers({"content-Type":"application/json"})
-  constructor(private http:HttpClient) {   }
+  Total: number;
+  dataSet: any = [];
+  debitData: any = [];
+  id: number;
+  // searchTearm:string;
+  debitTotal: number;
+  enableCntry: boolean = false;
+
+  test: string;
+
+  // private headers = new Headers({ "content-Type": "application/json" })
+  // booksRef: AngularFireList<any>;
+  // bookRef: AngularFireObject<any>;
+  constructor(private http: HttpClient, private db: AngularFireDatabase, private dataService: dataService) {
+  }
 
   ngOnInit() {
-  this.fetchData();
-  this.fetchMembers();
+    this.dataService.getMembersList().subscribe((res) => {
+      this.dataSet = res;
+      this.Total = this.updateTotal(this.dataSet);
+    });
+    this.fetchData();
   }
 
  
-  fetchMembers(){
-    this.http.get("https://ng-complate-guide-3c2a6.firebaseio.com/test.json").pipe(
-      map(data => {   
-       var  list=[]
-        for(var i=0; i<Object.keys(data).length; i++)
-       {
-          list.push(data[Object.keys(data)[i]])
-       }
-       return list;
+  fetchData() {
+    this.db.list("products").snapshotChanges()
+      .pipe(
+        map(data => {
+          var list = [];
+          data.forEach(item => {
+            let a = item.payload.toJSON();
+            a['$key'] = item.key;
+            list.push(a);
+          })
+          return list;
+        })
+      ).subscribe((res) => {
+        this.debitData = res;
+        this.debitTotal = this.updateTotal(this.debitData);
       })
-    ).toPromise().then((res) =>{
-      this.dataSet = res;
-      debugger
-      this.Total =  this.updateTotal(this.dataSet);
-  });
   }
-fetchData (){
-   this.http.get("https://ng-complate-guide-3c2a6.firebaseio.com/products.json").pipe(
-    map(data => {   
-     var  list=[]
-      for(var i=0; i<Object.keys(data).length; i++)
-        list.push(data[Object.keys(data)[i]])
-     return list;
-    })
-  ).subscribe((res) =>{
-    debugger
-    this.debitData = res;
-    this.debitTotal = this.updateTotal(this.debitData);
-  })
-}
-
 
   DeleteProduct(articleId) {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const url = '${"https://ng-complate-guide-3c2a6.firebaseio.com/products"}/${articleId}';
-    const url1 = 'https://ng-complate-guide-3c2a6.firebaseio.com/products/'+articleId;
-    this.http.delete(url1, {headers: headers}).toPromise().then( () => {
-      this.fetchData();
-    })
+    this.dataService.DeleteTransaction(articleId)
   }
 
   DeleteCreadit(articleId) {
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const url = '${"https://ng-complate-guide-3c2a6.firebaseio.com/test"}/${articleId}';
-    const url1 = 'https://ng-complate-guide-3c2a6.firebaseio.com/test/'+articleId;
-    this.http.delete(url1, {headers: headers}).toPromise().then( () => {
-      this.fetchData();
-    })
+    this.dataService.DeleteMember(articleId);
   }
 
-  updateTotal(data){
-    debugger
-    var total =0;
-    for(var i=0; i< data.length;i++){
+
+
+  updateTotal(data) {
+    var total = 0;
+    for (var i = 0; i < data.length; i++) {
       total += parseFloat(data[i].amt)
     }
     return total;
   }
 
-  drpSelected(args){
-    debugger
+  drpSelected(args) {
   }
 
-  enableChkBx(args){
-        this.enableCntry = args.checked;
+  enableChkBx(args) {
+    this.enableCntry = args.checked;
   }
 
-  trackByfn(index, item){
+  trackByfn(index, item) {
     return item;
   }
 }

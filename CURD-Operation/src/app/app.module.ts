@@ -18,6 +18,13 @@ import { AddDetailsComponent } from './add-member-details/add-details.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatNativeDateModule} from '@angular/material/core';
 
+// Firebase modules
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 
 import { MatAutocompleteModule, MatButtonModule, MatCheckboxModule, MatDatepickerModule, 
   MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule, 
@@ -51,9 +58,14 @@ import { MatAutocompleteModule, MatButtonModule, MatCheckboxModule, MatDatepicke
       {path:"updateProduct/:id", component:UpdateProdcutComponent},
       {path:"**", component:LoginCompComponent}
     ]}]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // Only required for database features
+    AngularFireAuthModule, // Only required for auth features,
+    AngularFireStorageModule // Only required for storage features
+  
   ],
-  providers: [OnlyLoggedInUsersGuardGuard],
+  providers: [OnlyLoggedInUsersGuardGuard,AngularFireDatabase],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
