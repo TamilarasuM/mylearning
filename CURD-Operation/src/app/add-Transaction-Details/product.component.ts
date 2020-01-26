@@ -22,7 +22,6 @@ export class ProductComponent implements OnInit {
 
   }
   addProduct(data){
-    debugger
     this.product = data;//{  "name" : data.name,"color" :data.color}
     if(this.SearchName)
       this.product["name"] = this.SearchName

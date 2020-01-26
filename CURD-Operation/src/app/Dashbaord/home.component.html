@@ -1,52 +1,82 @@
 <!-- <p>
   <a routerLink="/product">Add Product</a>
 </p> -->
-<br>
 
-<span style="float: right;"> 
-<label style="display: inline;"> Search: </label>
-<input  type="text" style="width:100px;display:inline;"  placeholder="Mobile" class="form-control"/>
+<mat-tab-group>
+  <mat-tab label="Members Details"> 
+    <br>
+    <div class="well1">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Mobile No</td>
+            <td>Date</td>
+            <td>Amount</td>
+            <td>Type</td>
+            <td>Delete</td>
+            <td>Update</td>
+          </tr>
+        </thead>
+
+        <tr *ngFor="let data of (dataSet | dataFilter)">
+          <td>{{data.name}}</td>
+          <td>{{data.mobileno}}</td>
+          <td>{{data.date}}</td>
+          <td>{{data.amt | currency:"INR" }}</td>
+          <td>{{data.TranType}}</td>
+          <td><a (click)="DeleteCreadit(data.$key)">Delete</a></td>
+          <td><a [routerLink]="['../updateProduct', data.$key]">Update</a></td>
+        </tr>
+      </table>
+      <div>
+        <!-- <span>Show Total</span> <input type="checkbox" #checkBX (change)="enableChkBx(checkBX)">  *ngIf=enableCntry-->
+        <div style="color: red" class="card"><b>Total Amount: {{Total | currency:"INR"}}</b></div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Transaction"> 
+    <br>
+    <div>
+    <div class="well1">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Mobile No</td>
+            <td>Date</td>
+            <td>Amount</td>
+            <td>Type</td>
+            <td>Delete</td>
+            <td>Update</td>
+          </tr>
+        </thead>
+        <tr *ngFor="let data of debitData | dataFilter ; trackBy:trackByfn">
+          <td>{{data.name}}</td>
+          <td>{{data.mobileno}}</td>
+          <td>{{data.date}}</td>
+          <td>{{data.amt | currency:"INR" }}</td>
+          <td>{{data.TranType}}</td>
+          <td><a (click)="DeleteProduct(data.$key)">Delete</a></td>
+          <td><a [routerLink]="['../updateProduct', data.$key]">Update</a></td>
+        </tr>
+      </table>
+      <div>
+        <!-- <span>Show Total</span> <input type="checkbox" #checkBX (change)="enableChkBx(checkBX)"> -->
+        <!-- *ngIf=enableCntry -->
+        <div style="color: green" class="card"><b>Total Amount: {{debitTotal | currency:"INR"}}</b></div>
+      </div>
+    </div>
+  
+  </div>
+ </mat-tab>
+</mat-tab-group>
+
+<span style="float: right;">
+  <label style="display: inline;"> Search: </label>
+  <input type="text" style="width:100px;display:inline;" placeholder="Mobile" class="form-control" />
 </span>
-<h4 style="color: red">Members Details:</h4>
-<div class="well">
-<table class="table">
-<thead><tr>
- <td>Name</td> <td>Mobile No</td> <td>Date</td><td>Amount</td><td>Type</td><td>Delete</td><td>Update</td>
-</tr></thead>
 
-  <tr *ngFor="let data of dataSet">
-    <td>{{data.name}}</td> <td>{{data.mobileno}}</td> <td>{{data.date}}</td><td>{{data.amt | currency:"INR" }}</td>
-    <td>{{data.TranType}}</td>
-    <td><a (click)="DeleteCreadit(data.$key)" >Delete</a></td>
-    <td><a [routerLink]="['../updateProduct', data.$key]">Update</a></td>
-  </tr>
-</table>
-<div>
-    <!-- <span>Show Total</span> <input type="checkbox" #checkBX (change)="enableChkBx(checkBX)">  *ngIf=enableCntry-->
-<div style="color: red" class="card"><b>Total Amount: {{Total | currency:"INR"}}</b></div>
-</div>
-</div>
 
-<br/>
-<div>
-  <h4 style="color: green">Transaction Details:</h4>
-  <div class="well">
-  <table class="table">
-  <thead><tr>
-    <td>Name</td> <td>Mobile No</td> <td>Date</td><td>Amount</td><td>Type</td><td>Delete</td><td>Update</td>
-  </tr></thead>
-    <tr *ngFor="let data of debitData | dataFilter ; trackBy:trackByfn">
-      <td>{{data.name}}</td> <td>{{data.mobileno}}</td> <td>{{data.date}}</td><td>{{data.amt | currency:"INR" }}</td>
-      <td>{{data.TranType}}</td>
-      <td><a (click)="DeleteProduct(data.$key)" >Delete</a></td>
-      <td><a [routerLink]="['../updateProduct', data.$key]">Update</a></td>
-    </tr>
-  </table>
-  <div>
-  <!-- <span>Show Total</span> <input type="checkbox" #checkBX (change)="enableChkBx(checkBX)"> -->
-  <!-- *ngIf=enableCntry -->
-  <div style="color: green" class="card"><b>Total Amount: {{debitTotal | currency:"INR"}}</b></div>
-  </div>
-  </div>
 
-</div>
+<br />

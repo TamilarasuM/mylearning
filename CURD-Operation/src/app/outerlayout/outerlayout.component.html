@@ -5,43 +5,42 @@
       </div>
     </nav> -->
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-header"> 
-                <a class="navbar-brand"> 
-                     <span class="glyphicon glyphicon-list"></span>
-                    Expense Tracker
-                </a>
-                <!-- <a href="#"><span class="glyphicon glyphicon-list"></span> Expense Tracker</a> -->
-        <!-- </div> -->
-   
-    </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" #refEl (click)="toggleSideNav(refEl)">
+                <span class="glyphicon glyphicon-list"></span> Expense Tracker
+            </a>
+            <!-- <a href="#"><span class="glyphicon glyphicon-list"></span> Expense Tracker</a> -->
+            <!-- </div> -->
+
+        </div>
         <!-- <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">Page 1</a></li>
         <li><a href="#">Page 2</a></li>
         </ul> -->
         <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
     </div>
-    </nav>
-<div class="container-fluid">    
-   
+</nav>
+<div class="container-fluid">
+
 
     <div class="row content">
         <div class="col-md-2 pannel">
             <div class="sidenav">
                 <p><a routerLink="./home" routerLinkActive="active">Dashboard</a></p>
                 <p><a routerLink="./addMember" routerLinkActive="active">Add Member</a></p>
-                <p><a routerLink="./product" routerLinkActive="active">Add Transaction</a></p>      
-                </div>
+                <p><a routerLink="./product" routerLinkActive="active">Add Transaction</a></p>
+            </div>
         </div>
-        <section class="col-md-8 text-left" style="margin-top: 54px;"> 
+        <section class="col-md-8 text-left" style="margin-top: 54px;">
             <router-outlet></router-outlet>
         </section>
-        <div class="col-md-2 text-left"> </div> 
+        <div class="col-md-2 text-left"> </div>
     </div>
 </div>
 
@@ -59,7 +58,3 @@
       </mat-sidenav-content>
     </mat-sidenav-container>
   </div> -->
-  
-
-
-

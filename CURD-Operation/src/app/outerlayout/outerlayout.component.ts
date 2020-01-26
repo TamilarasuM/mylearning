@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-outerlayout',
@@ -11,5 +11,16 @@ export class OuterlayoutComponent implements OnInit {
 
   ngOnInit() {
   }
+  toggleSideNav(ele:ElementRef){
+    debugger
+    if(navigator.userAgent.indexOf("Mobile")>-1){
+      if(document.getElementsByClassName("sidenav")[0].className == "sidenav")
+        document.getElementsByClassName("sidenav")[0].className = "sidenav sideMenu";
+      else
+       document.getElementsByClassName("sidenav")[0].className = "sidenav";
+    }
+    else{
 
+    }
+  }
 }

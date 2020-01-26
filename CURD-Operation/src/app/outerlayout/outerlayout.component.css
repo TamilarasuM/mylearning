@@ -2,52 +2,55 @@
     padding-top: 20px;
     background-color: #f1f1f1;
     height: 100%;
-  }
-  
-  .sidenav a{
+}
+
+.sidenav a {
     color: black;
     padding: 5px;
-  }
+}
 
-  .sidenav a:hover{
-    color:white;
+.sidenav a:hover {
+    color: white;
     background-color: rgb(100, 94, 94);
     padding: 5px;
     text-decoration: none;
     border-radius: 5px;
-  }
-  
-  @media screen and (max-width: 767px) {
+}
+
+@media screen and (max-width: 767px) {
     .sidenav {
-      height: auto;
-      padding: 15px;
+        height: auto;
+        padding: 15px;
     }
-    .row.content {height:auto;} 
-  }
-  .sidenav {
-  /* position: fixed; */
-  /* top: 54px; */
-  /* bottom: 0;
+    .row.content {
+        height: auto;
+    }
+}
+
+.sidenav {
+    /* position: fixed; */
+    /* top: 54px; */
+    /* bottom: 0;
   left: 0;
   padding: 35px;
   min-width: 195px;
   background-color: #fff;
   box-shadow: 6px 0 6px rgba(0,0,0,.1); */
 }
-.sidenav{
-height: 100%;
-width: 195px;
-position: fixed;
-z-index: 1;
-top: 0;
-left: 0;
-background-color: #fff;
-box-shadow: 6px 0 6px rgba(0,0,0,.1);
-overflow-x: hidden;
-transition: 0.5s;
-padding-top: 5em;
-padding-left: 3em;
 
+.sidenav {
+    height: 100%;
+    width: 195px;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 5em;
+    padding-left: 3em;
 }
 
 .sidenav .active {
@@ -59,13 +62,17 @@ padding-left: 3em;
 }
 
 @media only screen and (max-width: 600px) {
-
-  .nav.navbar-nav.navbar-right {
-    display: none;
-  }
-
-  .sidenav {
-    width: 0;
-  }
-  
+    .nav.navbar-nav.navbar-right {
+        display: none;
+    }
+    .sidenav {
+        width: 50%;
+        margin-left: -50%
+    }
+    .sidenav.sideMenu {
+        margin-left: 0%;
+    }
+    body {
+        font-size: 10px !important;
+    }
 }

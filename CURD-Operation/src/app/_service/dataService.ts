@@ -3,7 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from "rxjs/operators";
 import { debug } from 'util';
 import { Observable } from 'rxjs';
-import {  AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { AngularFireList, AngularFireObject } from '@angular/fire/database';
 
 @Injectable({
     providedIn: 'root'
@@ -29,16 +29,14 @@ export class dataService {
         )
         return data;
     }
-
-     /* Delete book */
-  DeleteMember(id: string) {
-    return  this.db.object('/test/' + id).remove().catch(error => {
-        alert(error);
-   })
-  }
-  DeleteTransaction(id: string) {
-    return  this.db.object('/products/' + id).remove().catch(error => {
-        alert(error);
-   })
-  }
+    DeleteMember(id: string) {
+        return this.db.object('/test/' + id).remove().catch(error => {
+            alert(error);
+        })
+    }
+    DeleteTransaction(id: string) {
+        return this.db.object('/products/' + id).remove().catch(error => {
+            alert(error);
+        })
+    }
 }

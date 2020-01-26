@@ -26,9 +26,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 
-import { MatAutocompleteModule, MatButtonModule, MatCheckboxModule, MatDatepickerModule, 
-  MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule, 
-  MatSlideToggleModule } from '@angular/material';
+import { MaterialModule } from "./material_module/material-module";
 
 @NgModule({
   declarations: [
@@ -47,6 +45,7 @@ import { MatAutocompleteModule, MatButtonModule, MatCheckboxModule, MatDatepicke
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MaterialModule,
     RouterModule.forRoot([
       // {path:"", redirectTo:"login", pathMatch:"full"},
       {path:"", component:LoginCompComponent},
