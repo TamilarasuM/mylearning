@@ -1,0 +1,14 @@
+.well12 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.well12 mat-card {
+    width: 50%;
+}

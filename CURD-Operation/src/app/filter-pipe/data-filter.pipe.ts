@@ -3,12 +3,13 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'dataFilter'
 })
 export class DataFilterPipe implements PipeTransform {
-  transform(value: any, args?: any): any {
-    if(args== undefined || args =="")
+  transform(value: any, mobileNo?: any): any {
+    debugger
+    if(mobileNo== undefined ||  mobileNo.length <= 9)
       return  value;
     else
     {
-      return value.filter( data => data.mobileno  == args)
+      return value.filter( data => data.mobileno  == mobileNo)
     }
   }
 

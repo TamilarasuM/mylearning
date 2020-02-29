@@ -15,6 +15,7 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angula
 })
 export class HomeComponent implements OnInit {
   Total: number;
+  term:string;
   dataSet: any = [];
   debitData: any = [];
   id: number;

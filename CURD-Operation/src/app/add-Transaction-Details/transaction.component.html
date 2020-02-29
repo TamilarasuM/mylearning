@@ -48,13 +48,16 @@
             <form id="formNewProduct" name="formNewProduct" #newProduct="ngForm" (ngSubmit)="addProduct(newProduct.value)">
                 <mat-form-field class="example-full-width">
                     <mat-label>Mobile Number</mat-label>
-                    <!-- <input matInput name="name" ngModel required> -->
-                    <input matInput class="form-control" type="number" #mobNo name="mobileno" (keyup1)="search(mobNo)" ngModel required> <br>
+                    <input matInput type="number" #mobNo name="mobileno" (keyup1)="search(mobNo)" ngModel required> <br>
                 </mat-form-field>
                 <button type="button" class="btn btn-success" (click)="search(mobNo)" style="position: relative;position: relative;top: -54px;float: right;"> Search </button>
+                <div *ngIf="searching">
+                    <mat-progress-bar class="example-margin" [mode]="mode" [value]="value" [bufferValue]="bufferValue">
+                    </mat-progress-bar>
+                </div>
                 <div *ngIf="searchNameFound else notShowBlock" class="alert alert-success">
                     <label> <strong> {{SearchName}}</strong>  - name found !!!...</label>
-                    <input style="display: none;" class="form-control" value={ {SearchName}} name="name" placeholder="name" required>
+                    <input style="display: none;" value={{SearchName}} name="name" required>
                 </div>
                 <ng-template #notShowBlock>
                     <div class="alert alert-danger">
@@ -64,7 +67,7 @@
                 <br>
                 <mat-form-field appearance="">
                     <mat-label>Transaction type:</mat-label>
-                    <mat-select>
+                    <mat-select name="TranType" ngModel>
                         <mat-option value="Debit">Debit(+)</mat-option>
                         <mat-option value="Credit">Credit(-)</mat-option>
                     </mat-select>
@@ -81,7 +84,7 @@
                 </mat-form-field>
                 <br>
                 <mat-form-field class="example-full-width">
-                    <mat-label>Description1</mat-label>
+                    <mat-label>Additional Info</mat-label>
                     <input matInput name="type" ngModel> <br>
                 </mat-form-field>
                 <br>

@@ -48,4 +48,9 @@ export class dataService {
             alert(error);
         })
     }
+    UpdateTransaction(id: string,formData:object) {
+        return this.db.object('/products/' + id).update(formData).catch(error => {
+            alert(error);
+        })
+    }
 }
