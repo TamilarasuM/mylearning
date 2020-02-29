@@ -1,60 +1,39 @@
-<!-- <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-        </div>
-      </div>
-    </nav> -->
+<div style="height: calc(100% - 64px);">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+            <span>Personal Expense Tracker</span>
+            <span class="menu-spacer"></span>
+        </mat-toolbar-row>
+    </mat-toolbar>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" #refEl (click)="toggleSideNav(refEl)">
-                <span class="glyphicon glyphicon-list"></span> Expense Tracker
-            </a>
-            <!-- <a href="#"><span class="glyphicon glyphicon-list"></span> Expense Tracker</a> -->
-            <!-- </div> -->
-
-        </div>
-        <!-- <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li>
-        </ul> -->
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-    </div>
-</nav>
-<div class="container-fluid">
-
-
-    <div class="row content">
-        <div class="col-md-2 pannel">
-            <div class="sidenav">
-                <p><a routerLink="./home" routerLinkActive="active">Dashboard</a></p>
-                <p><a routerLink="./addMember" routerLinkActive="active">Add Member</a></p>
-                <p><a routerLink="./product" routerLinkActive="active">Add Transaction</a></p>
-            </div>
-        </div>
-        <section class="col-md-8 text-left" style="margin-top: 54px;">
+    <mat-sidenav-container class="side-container">
+        <mat-toolbar color="primary">
+            <mat-toolbar-row>
+                <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+            <mat-icon>menu</mat-icon>
+          </button>
+                <span>Personal Expense Tracker</span>
+                <span class="menu-spacer"></span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-sidenav #sidenav>
+            <mat-nav-list>
+                <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['./home']">
+                    <mat-icon class="sidenav-icon">dashboard</mat-icon>Dashboard
+                </a>
+                <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['./addMember']">
+                    <mat-icon class="sidenav-icon">account_circle</mat-icon>Add Details
+                </a>
+                <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['./product']">
+                    <mat-icon class="sidenav-icon">playlist_add</mat-icon>Add Transaction
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content fxFlexFill class="side-container">
             <router-outlet></router-outlet>
-        </section>
-        <div class="col-md-2 text-left"> </div>
-    </div>
-</div>
-
-<!-- <div class="layout-container">
-    <app-top-nav (sideNavToggled)="snav.toggle()"></app-top-nav>
-  
-    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="toolBarHeight">
-      <mat-sidenav #snav class="sidenav mat-elevation-z10">
-        <app-side-nav></app-side-nav>
-      </mat-sidenav>
-      <mat-sidenav-content>
-        <main class="main-container">
-          <router-outlet></router-outlet>
-        </main>
-      </mat-sidenav-content>
+        </mat-sidenav-content>
     </mat-sidenav-container>
-  </div> -->
+</div>

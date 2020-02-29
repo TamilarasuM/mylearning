@@ -1,0 +1,93 @@
+<!-- <h4>
+  Add Transaction:
+</h4> -->
+
+<!-- <div class="well" style="width: 50%; left:20%">
+    <form id="formNewProduct" name="formNewProduct" #newProduct="ngForm" (ngSubmit)="addProduct(newProduct.value)">
+        
+        <button type="button" class="btn btn-success" (click)="search(mobNo)" style="position: relative;position: relative;top: -54px;float: right;"> Search </button>
+
+        <div *ngIf="searchNameFound else notShowBlock" class="alert alert-success">
+            <label> <strong> {{SearchName}}</strong>  - name found !!!...</label>
+            <input style="display: none;" class="form-control" value={ {SearchName}} name="name" placeholder="name" required>
+        </div>
+        <ng-template #notShowBlock>
+            <div class="alert alert-danger">
+                search result not found.....
+            </div>
+        </ng-template>
+
+        <label>Transaction type:</label>
+        <select class="form-control" name="TranType" ngModel>
+  <option value="Debit"  >Debit (+)</option>
+  <option value="Credit" >Credit (-)</option>
+</select> <br>
+
+        <label>Amount:</label>
+        <input type="number" class="form-control" name="amt" placeholder="amount" ngModel required> <br>
+        <label>Date:</label><input class="form-control" type="date" name="date" ngModel required> <br>
+        <label>Description1:</label><input class="form-control" name="type" placeholder="description" ngModel required> <br>
+
+        <button class="btn btn-success" [disabled]="newProduct.invalid" style="float:right;" type="submit">Submit</button>
+    </form>
+</div>
+
+
+<div class="alert alert-success" *ngIf="updatedSuccessfully">Data added successfully</div> -->
+
+
+
+
+<div class="well12">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title>Add Transaction</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form id="formNewProduct" name="formNewProduct" #newProduct="ngForm" (ngSubmit)="addProduct(newProduct.value)">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Mobile Number</mat-label>
+                    <!-- <input matInput name="name" ngModel required> -->
+                    <input matInput class="form-control" type="number" #mobNo name="mobileno" (keyup1)="search(mobNo)" ngModel required> <br>
+                </mat-form-field>
+                <button type="button" class="btn btn-success" (click)="search(mobNo)" style="position: relative;position: relative;top: -54px;float: right;"> Search </button>
+                <div *ngIf="searchNameFound else notShowBlock" class="alert alert-success">
+                    <label> <strong> {{SearchName}}</strong>  - name found !!!...</label>
+                    <input style="display: none;" class="form-control" value={ {SearchName}} name="name" placeholder="name" required>
+                </div>
+                <ng-template #notShowBlock>
+                    <div class="alert alert-danger">
+                        search result not found.....
+                    </div>
+                </ng-template>
+                <br>
+                <mat-form-field appearance="">
+                    <mat-label>Transaction type:</mat-label>
+                    <mat-select>
+                        <mat-option value="Debit">Debit(+)</mat-option>
+                        <mat-option value="Credit">Credit(-)</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Amount</mat-label>
+                    <input matInput name="amt" type="number" ngModel required>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Date</mat-label>
+                    <input matInput type="date" name="date" ngModel required>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Description1</mat-label>
+                    <input matInput name="type" ngModel> <br>
+                </mat-form-field>
+                <br>
+                <button class="btn btn-success" [disabled]="newProduct.invalid" style="float:right;" type="submit">Submit</button>
+            </form>
+        </mat-card-content>
+
+    </mat-card>
+</div>

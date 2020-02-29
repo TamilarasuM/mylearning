@@ -7,10 +7,10 @@ import { debug } from 'util';
 
 @Component({
   selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  templateUrl: './transaction.component.html',
+  styleUrls: ['./transaction.component.css']
 })
-export class ProductComponent implements OnInit {
+export class TransactionComponent implements OnInit {
   updatedSuccessfully = false;
   searchNameFound =false;
   product:object ={};
@@ -49,7 +49,6 @@ export class ProductComponent implements OnInit {
      debounceTime(500),
       map(data => {
        var  list=[];
-      //list:Object[] =new Array();
       for(var i=0; i<Object.keys(data).length; i++)
           list.push(data[Object.keys(data)[i]])
        return list;

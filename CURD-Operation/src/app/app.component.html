@@ -20,7 +20,14 @@
       </div> 
       </div>
     </nav> -->
-<router-outlet></router-outlet>
+
+<!-- *ngIf="loader.isLoading | async" -->
+<!-- <div class="overlay">
+
+    <mat-spinner class="spinner"></mat-spinner>
+</div> -->
+
+
 
 <!-- 
 <nav class="navbar navbar-inverse">
@@ -74,3 +81,30 @@
 
 
 
+<!-- <div style="height: 80vh;">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+            <span>Personal Expense Tracker</span>
+            <span class="menu-spacer"></span>
+            <div fxShow="true" fxHide.lt-md>
+
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-sidenav-container fxFlexFill>
+        <mat-sidenav #sidenav>
+            <mat-nav-list>
+
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content fxFlexFill>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div> -->
+
+<router-outlet></router-outlet>

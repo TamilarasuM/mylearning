@@ -5,18 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Dashbaord/home.component';
 import { RouterModule} from "@angular/router";
-import { HttpClientModule } from '@angular/common/http';
-import { ProductComponent } from './add-Transaction-Details/product.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { TransactionComponent } from './add-Transaction-Details/transaction.component';
 import { FormsModule} from "@angular/forms";
 import { UpdateProdcutComponent } from './update-prodcut/update-prodcut.component';
 import { LoginCompComponent } from './login-comp/login-comp.component';
 import { OuterlayoutComponent } from './outerlayout/outerlayout.component';
-import { CanActivate } from '@angular/router';
 import { OnlyLoggedInUsersGuardGuard} from "./_guard/only-logged-in-users-guard.guard";
 import { DataFilterPipe } from './filter-pipe/data-filter.pipe';
 import { AddDetailsComponent } from './add-member-details/add-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatNativeDateModule} from '@angular/material/core';
 
 // Firebase modules
 import { AngularFireModule } from '@angular/fire';
@@ -27,12 +26,13 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 
 import { MaterialModule } from "./material_module/material-module";
+import {  TokenInterceptorService } from './intercep/InterceptorService';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProductComponent,
+    TransactionComponent,
     UpdateProdcutComponent,
     LoginCompComponent,
     OuterlayoutComponent,
@@ -51,12 +51,13 @@ import { MaterialModule } from "./material_module/material-module";
       {path:"", component:LoginCompComponent},
       {path:"layout", component:OuterlayoutComponent, canActivate: [OnlyLoggedInUsersGuardGuard]     
        ,children:[
-      {path:"home", component:HomeComponent},
-      {path:"product", component:ProductComponent},
-      {path:"addMember", component:AddDetailsComponent},
-      {path:"updateProduct/:id", component:UpdateProdcutComponent},
-      {path:"**", component:LoginCompComponent}
-    ]}]),
+                  {path:"home", component:HomeComponent},
+                  {path:"product", component:TransactionComponent},
+                  {path:"addMember", component:AddDetailsComponent},
+                  {path:"updateProduct/:id", component:UpdateProdcutComponent},
+                  {path:"**", component:LoginCompComponent}
+      ]}
+  ]),
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // Only required for database features
@@ -64,7 +65,11 @@ import { MaterialModule } from "./material_module/material-module";
     AngularFireStorageModule // Only required for storage features
   
   ],
-  providers: [OnlyLoggedInUsersGuardGuard,AngularFireDatabase],
+  providers: [
+    // OnlyLoggedInUsersGuardGuard
+    // ,
+    AngularFireDatabase, 
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

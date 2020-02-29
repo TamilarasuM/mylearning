@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { dataService } from './_service/dataService';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'CURD-Operation';
+  constructor(private loader:dataService){}
+  title = 'Expense Sheet';
   showMenu = false;
+  isLoading = false;
+  ngOnInt(){
+    //  this.loader.isLoading;
+  }
+
 }

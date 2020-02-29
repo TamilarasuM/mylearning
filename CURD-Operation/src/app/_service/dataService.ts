@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from "rxjs/operators";
 import { debug } from 'util';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { AngularFireList, AngularFireObject } from '@angular/fire/database';
 
 @Injectable({
@@ -10,6 +10,15 @@ import { AngularFireList, AngularFireObject } from '@angular/fire/database';
 })
 
 export class dataService {
+
+    isLoading = new Subject<boolean>();
+    show() {
+        this.isLoading.next(true);
+    }
+    hide() {
+        this.isLoading.next(false);
+    }
+
     Total: number;
     dataSet: any = [];
     todos$: AngularFireList<any[]>;

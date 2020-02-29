@@ -21,12 +21,6 @@ export class HomeComponent implements OnInit {
   // searchTearm:string;
   debitTotal: number;
   enableCntry: boolean = false;
-
-  test: string;
-
-  // private headers = new Headers({ "content-Type": "application/json" })
-  // booksRef: AngularFireList<any>;
-  // bookRef: AngularFireObject<any>;
   constructor(private http: HttpClient, private db: AngularFireDatabase, private dataService: dataService) {
   }
 
