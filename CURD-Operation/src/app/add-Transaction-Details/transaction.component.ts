@@ -13,7 +13,7 @@ import { debug } from 'util';
 export class TransactionComponent implements OnInit {
  
   // color: ThemePalette = 'primary';
-  // mode: ProgressBarMode = 'indeterminate';
+  mode: string = 'indeterminate';
   value = 50;
   bufferValue = 75;
 

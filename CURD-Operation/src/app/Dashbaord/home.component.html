@@ -1,47 +1,7 @@
-<mat-tab-group>
-    <mat-tab label="Members Details">
-        <br>
-        <div class="well1">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Mobile No</td>
-                        <td>Date</td>
-                        <td>Amount</td>
-                        <td>Type</td>
-                        <td>Delete</td>
-                        <td>Update</td>
-                    </tr>
-                </thead>
-                <tr *ngFor="let data of (dataSet | dataFilter:term)">
-                    <td>{{data.name}}</td>
-                    <td>{{data.mobileno}}</td>
-                    <td>{{data.date}}</td>
-                    <td>{{data.amt | currency:"INR" }}</td>
-                    <td>{{data.TranType}}</td>
-                    <td>
-                        <a (click)="DeleteCreadit(data.$key)">
-                            <mat-icon>delete_forever</mat-icon>
-                        </a>
-                    </td>
-                    <td>
-                        <a [routerLink]="['../updateProduct', data.$key]">
-                            <mat-icon>edit</mat-icon>
-                        </a>
-                    </td>
-                </tr>
-            </table>
-            <div>
-                <!-- <span>Show Total</span> <input type="checkbox" #checkBX (change)="enableChkBx(checkBX)">  *ngIf=enableCntry-->
-                <div style="color: red" class="card"><b>Total Amount: {{Total | currency:"INR"}}</b></div>
-            </div>
-        </div>
-    </mat-tab>
-
-    <mat-tab label="Transaction">
-        <br>
-        <div>
+<mat-card>
+    <mat-tab-group>
+        <mat-tab label="Members Details">
+            <br>
             <div class="well1">
                 <table class="table">
                     <thead>
@@ -55,14 +15,14 @@
                             <td>Update</td>
                         </tr>
                     </thead>
-                    <tr *ngFor="let data of debitData | dataFilter:term ; trackBy:trackByfn">
+                    <tr *ngFor="let data of (dataSet | dataFilter:term)">
                         <td>{{data.name}}</td>
                         <td>{{data.mobileno}}</td>
                         <td>{{data.date}}</td>
                         <td>{{data.amt | currency:"INR" }}</td>
-                        <td [ngStyle]="{'color':data.TranType === 'Credit' ? 'green' : 'red' }">{{data.TranType}}</td>
+                        <td>{{data.TranType}}</td>
                         <td>
-                            <a (click)="DeleteProduct(data.$key)">
+                            <a (click)="DeleteCreadit(data.$key)">
                                 <mat-icon>delete_forever</mat-icon>
                             </a>
                         </td>
@@ -74,23 +34,64 @@
                     </tr>
                 </table>
                 <div>
-                    <!-- <span>Show Total</span> <input type="checkbox" #checkBX (change)="enableChkBx(checkBX)"> -->
-                    <!-- *ngIf=enableCntry -->
-                    <div style="color: green" class="card"><b>Total Amount: {{debitTotal | currency:"INR"}}</b></div>
+                    <!-- <span>Show Total</span> <input type="checkbox" #checkBX (change)="enableChkBx(checkBX)">  *ngIf=enableCntry-->
+                    <div style="color: red" class="card"><b>Total Amount: {{Total | currency:"INR"}}</b></div>
                 </div>
             </div>
+        </mat-tab>
 
-        </div>
-    </mat-tab>
-</mat-tab-group>
+        <mat-tab label="Transaction">
+            <br>
+            <div>
+                <div class="well1">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Mobile No</td>
+                                <td>Date</td>
+                                <td>Amount</td>
+                                <td>Type</td>
+                                <td>Delete</td>
+                                <td>Update</td>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let data of debitData | dataFilter:term ; trackBy:trackByfn">
+                            <td>{{data.name}}</td>
+                            <td>{{data.mobileno}}</td>
+                            <td>{{data.date}}</td>
+                            <td>{{data.amt | currency:"INR" }}</td>
+                            <td [ngStyle]="{'color':data.TranType === 'Credit' ? 'green' : 'red' }">{{data.TranType}}</td>
+                            <td>
+                                <a (click)="DeleteProduct(data.$key)">
+                                    <mat-icon>delete_forever</mat-icon>
+                                </a>
+                            </td>
+                            <td>
+                                <a [routerLink]="['../updateProduct', data.$key]">
+                                    <mat-icon>edit</mat-icon>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div>
+                        <!-- <span>Show Total</span> <input type="checkbox" #checkBX (change)="enableChkBx(checkBX)"> -->
+                        <!-- *ngIf=enableCntry -->
+                        <div style="color: green" class="card"><b>Total Amount: {{debitTotal | currency:"INR"}}</b></div>
+                    </div>
+                </div>
 
-<span style="float: right;">
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+    <span style="float: right;">
   <mat-form-field class="example-full-width">
     <mat-label>Search Mobile No</mat-label>
    <input matInput name="type" name="term" [(ngModel)]="term">
   </mat-form-field>
 </span>
 
-
+</mat-card>
 
 <br />
